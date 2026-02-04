@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | EligifyAI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                <i class="fas fa-landmark"></i>
+                <span>EligifyAI</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="text-blue-600 transition">Contact</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="{% url 'logout' %}" class="px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition font-medium">Logout</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition block">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition block">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition block">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition block">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition block">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition block">Contact</a>
+                <a href="{% url 'logout' %}" class="block text-blue-600 font-semibold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
+            <p class="text-slate-400">We're here to help. Reach out to us for any queries or support.</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="py-16 -mt-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Info Cards -->
+                <div class="md:col-span-1 space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Email Us</h3>
+                            <p class="text-sm text-slate-500 mb-1">For general inquiries</p>
+                            <a href="mailto:support@eligifyai.com" class="text-blue-600 font-medium hover:underline">support@eligifyai.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Call Us</h3>
+                            <p class="text-sm text-slate-500 mb-1">Mon-Fri, 9am - 6pm</p>
+                            <a href="tel:+1234567890" class="text-blue-600 font-medium hover:underline">+91 7223017603</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Visit Us</h3>
+                            <p class="text-sm text-slate-500 mb-1">Headquarters</p>
+                            <p class="text-slate-700">123 FinTech Blvd, Suite 400<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="md:col-span-2">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-6">Send a Message</h2>
+                        <form action="#" method="POST" class="space-y-6">
+                            {% csrf_token %}
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="John">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Doe">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <input type="email" class="w-full pl-10 px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="john@example.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="How can we help you?"></textarea>
+                            </div>
+
+                            <button type="button" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition w-full md:w-auto shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-landmark"></i> EligifyAI
+            </div>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="{% url 'about' %}" class="hover:text-white transition">About Us</a>
+                <a href="{% url 'faq' %}" class="hover:text-white transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="text-white font-medium">Contact Support</a>
+            </div>
+            <p class="text-sm opacity-50">&copy; 2024 EligifyAI Loan Prediction System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

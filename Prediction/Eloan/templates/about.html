@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EligifyAI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                <i class="fas fa-landmark"></i>
+                <span>EligifyAI</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition">Home</a>
+                <a href="{% url 'about' %}" class="text-blue-600 transition">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="{% url 'logout' %}" class="px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition font-medium">Logout</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition block">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition block">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition block">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition block">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition block">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition block">Contact</a>
+                <a href="{% url 'logout' %}" class="block text-blue-600 font-semibold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Empowering Financial Freedom</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">We're on a mission to democratize access to credit through transparent, AI-driven eligibility assessments.</p>
+        </div>
+    </header>
+
+    <!-- Mission Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-blue-100 rounded-2xl p-8 relative">
+                        <i class="fas fa-quote-left text-4xl text-blue-300 absolute top-4 left-4"></i>
+                        <img src="{% static 'img/loan5.jpg' %}" alt="Our Mission" class="rounded-xl shadow-lg w-full object-cover h-80">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Who We Are</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        EligifyAI is a fintech innovator dedicated to simplifying the loan application process. Traditional banking can be opaque and slow. We use advanced machine learning algorithms to analyze key financial metrics instantly, giving users a clear picture of their loan eligibility before they even step into a bank.
+                    </p>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Our team consists of data scientists, financial experts, and software engineers working together to build a fairer, faster financial future.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-blue-600">98%</span>
+                            <span class="text-sm text-slate-500">Accuracy</span>
+                        </div>
+                        <div class="w-px bg-slate-200"></div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-blue-600">24/7</span>
+                            <span class="text-sm text-slate-500">Availability</span>
+                        </div>
+                        <div class="w-px bg-slate-200"></div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-blue-600">10k+</span>
+                            <span class="text-sm text-slate-500">Users</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Our Core Values</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl mb-4">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Transparency</h3>
+                    <p class="text-slate-600">We believe in clear explanations for every decision. No black boxes.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Privacy First</h3>
+                    <p class="text-slate-600">Your financial data is yours. We protect it with enterprise-grade security.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Innovation</h3>
+                    <p class="text-slate-600">Constantly refining our models to provide the most accurate predictions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-landmark"></i> EligifyAI
+            </div>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="{% url 'about' %}" class="text-white font-medium">About Us</a>
+                <a href="{% url 'faq' %}" class="hover:text-white transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-white transition">Contact Support</a>
+            </div>
+            <p class="text-sm opacity-50">&copy; 2024 EligifyAI Loan Prediction System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

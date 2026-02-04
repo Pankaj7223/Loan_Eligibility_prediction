@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | EligifyAI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                <i class="fas fa-landmark"></i>
+                <span>EligifyAI</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition">Team</a>
+                <a href="{% url 'faq' %}" class="text-blue-600 transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="{% url 'logout' %}" class="px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition font-medium">Logout</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition block">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition block">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition block">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition block">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition block">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition block">Contact</a>
+                <a href="{% url 'logout' %}" class="block text-blue-600 font-semibold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="bg-white py-16 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">Everything you need to know about our loan eligibility prediction system.</p>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-3xl space-y-4">
+            
+            <!-- Item 1 -->
+            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 group open:ring-2 open:ring-blue-100 transition">
+                <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg text-slate-800">
+                    How accurate is the loan prediction?
+                    <span class="text-blue-600 transition-transform group-open:rotate-180">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="mt-4 text-slate-600 leading-relaxed">
+                    Our model is trained on a vast dataset of historical loan applications and achieves an accuracy rate of approximately 98%. However, this is a preliminary assessment and final approval depends on the bank's verification process.
+                </div>
+            </details>
+
+            <!-- Item 2 -->
+            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 group open:ring-2 open:ring-blue-100 transition">
+                <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg text-slate-800">
+                    Does checking my eligibility affect my credit score?
+                    <span class="text-blue-600 transition-transform group-open:rotate-180">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="mt-4 text-slate-600 leading-relaxed">
+                    No. Our tool performs a "soft inquiry" based on the data you provide. It does not communicate with credit bureaus, so your credit score remains completely unaffected.
+                </div>
+            </details>
+
+            <!-- Item 3 -->
+            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 group open:ring-2 open:ring-blue-100 transition">
+                <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg text-slate-800">
+                    Is my personal data secure?
+                    <span class="text-blue-600 transition-transform group-open:rotate-180">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="mt-4 text-slate-600 leading-relaxed">
+                    Absolutely. We use industry-standard encryption to process your data. We do not store your personal financial details after the session ends, and we never share your data with third parties without your explicit consent.
+                </div>
+            </details>
+
+            <!-- Item 4 -->
+            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 group open:ring-2 open:ring-blue-100 transition">
+                <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg text-slate-800">
+                    What documents do I need for the actual loan?
+                    <span class="text-blue-600 transition-transform group-open:rotate-180">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="mt-4 text-slate-600 leading-relaxed">
+                    While requirements vary by lender, you typically need proof of identity, proof of address, income statements (salary slips or tax returns), and bank statements for the last 3-6 months.
+                </div>
+            </details>
+
+             <!-- Item 5 -->
+             <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 group open:ring-2 open:ring-blue-100 transition">
+                <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg text-slate-800">
+                    Why was my loan prediction "Not Eligible"?
+                    <span class="text-blue-600 transition-transform group-open:rotate-180">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="mt-4 text-slate-600 leading-relaxed">
+                    Common reasons include a low credit history, insufficient income relative to the loan amount, or lack of collateral. Our system considers multiple factors. We recommend improving your credit score or applying for a lower amount.
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-landmark"></i> EligifyAI
+            </div>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="{% url 'about' %}" class="hover:text-white transition">About Us</a>
+                <a href="{% url 'faq' %}" class="text-white font-medium">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-white transition">Contact Support</a>
+            </div>
+            <p class="text-sm opacity-50">&copy; 2024 EligifyAI Loan Prediction System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

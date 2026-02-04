@@ -1,97 +1,139 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taam Members</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | EligifyAI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
- 
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                <i class="fas fa-landmark"></i>
+                <span>EligifyAI</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="text-blue-600 transition">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="{% url 'logout' %}" class="px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition font-medium">Logout</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
 
-  
-
-    <link rel="stylesheet" href="{% static 'css/members.css' %}">
-
-
-<body>
-  <body style="margin:0; height:100vh; background:url('/static/img/loan5.jpg') no-repeat center center/cover;"></body>
-
-<header class="p-3 opacity-75">
-    <nav>
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white text-2xl font-semibold">Loan Eligibility Prediction System</div>
-            <div class="space-x-4">
-                <a href="{% url 'home' %}" class="text-white hover:underline">Home</a>
-                <a href="{% url 'prediction' %}" class="text-white hover:underline">CheckEligibility</a>
-                <a href="{% url 'team' %}" class="text-white hover:underline">Team Members</a>
-                <a href="{% url 'logout' %}" class="text-white hover:underline">Logout</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition block">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition block">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition block">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition block">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition block">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition block">Contact</a>
+                <a href="{% url 'logout' %}" class="block text-blue-600 font-semibold">Logout</a>
             </div>
         </div>
     </nav>
-</header>
 
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 
-      
-
-  <!-- Additional Content Section -->
-  <section class="transparent-section text-white py-12">
-    <div class="container mx-auto px-4">
-        <div class="text-center">
-            <h2 class="text-3xl font-bold">Our Team </h2><h2 class="continuous-color-transition">Developers </h2> 
-            <p class="text-lg mt-4">Discover All The Powerful Qualities Of Our Developers:</p>
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-6 py-16">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Meet Our Team</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto text-lg">The brilliant minds behind EligifyAI, dedicated to bringing you the best financial prediction technology.</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-            <div class="card" >
-                <img src="{% static "img/Pankaj kush.png" %}" alt="Sanskar Agarwal" class="rounded-full w-32 h-32 mx-auto mb-4">
-                <h3 class="card-title">Pankaj Kushwah</h3>
-                <p class="card-description">Pankaj Kushwah is known for his strong analytical skills and attention to detail. He excels in problem-solving and has a keen interest in data analysis and statistics. Pankaj is a dedicated team member who consistently delivers high-quality work.</p>
-                <div class="social-icons mt-4">
-                    <a href="https://github.com/Pankaj7223/" target="_blank" class="text-blue-600">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/pankaj-kushwah-515b99285/" target="_blank" class="text-blue-800 ml-4">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
+
+        <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            
+            <!-- Team Member 1 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1 border border-slate-100">
+                <div class="p-8 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <img src="{% static 'img/Pankaj kush.png' %}" alt="Pankaj Kushwah" class="rounded-full w-full h-full object-cover border-4 border-blue-50 shadow-md">
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Pankaj Kushwah</h3>
+                    <p class="text-blue-600 font-medium mb-4">Developer & Data Analyst</p>
+                    <p class="text-slate-500 mb-6 leading-relaxed">
+                        Pankaj is known for his strong analytical skills and attention to detail. He excels in problem-solving and has a keen interest in data analysis and statistics. Pankaj is a dedicated team member who consistently delivers high-quality work.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://github.com/Pankaj7223/" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-800 hover:text-white transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/pankaj-kushwah-515b99285/" target="_blank" class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="{% static "img/photo.jpg" %}" alt="Mohit Sharma" class="rounded-full w-32 h-32 mx-auto mb-4">
-                <h3 class="card-title">Padhi Suhani Srinibas</h3>
-                <p class="card-description">Padhi Suhani Srinibas is a creative thinker with a passion for design and user experience. She has a knack for translating ideas into visually appealing and user-friendly designs. Padhi is a valuable asset for any project that requires a strong design element.</p>
-                <div class="social-icons mt-4">
-                    <a href="" target="_blank" class="text-blue-600">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/padhi-suhani-srinibas-6b7268272/" target="_blank" class="text-blue-800 ml-4">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1 border border-slate-100">
+                <div class="p-8 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <img src="{% static 'img/photo.jpg' %}" alt="Padhi Suhani Srinibas" class="rounded-full w-full h-full object-cover border-4 border-purple-50 shadow-md">
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Padhi Suhani Srinibas</h3>
+                    <p class="text-purple-600 font-medium mb-4">UI/UX Designer</p>
+                    <p class="text-slate-500 mb-6 leading-relaxed">
+                        Padhi is a creative thinker with a passion for design and user experience. She has a knack for translating ideas into visually appealing and user-friendly designs. Padhi is a valuable asset for any project that requires a strong design element.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-800 hover:text-white transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/padhi-suhani-srinibas-6b7268272/" target="_blank" class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
-</section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-landmark"></i> EligifyAI
+            </div>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+                <a href="#" class="hover:text-white transition">Contact Support</a>
+            </div>
+            <p class="text-sm opacity-50">&copy; 2024 EligifyAI Loan Prediction System. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-
-  <!-- Footer Section -->
-  <footer class="transparent-section  text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; 2024 Loan Eligibility Prediction. All Rights Reserved.</p>
-    </div>
-  </footer>
-  <div id="loading-spinner" class="hidden">
-    <div class="spinner"></div>
-  </div>
-  <script>
-    // Show the loading spinner when the page starts loading
-    window.addEventListener("load", function () {
-      document.getElementById("loading-spinner").style.display = "none";
-    });
-  </script>
 </body>
-
 </html>

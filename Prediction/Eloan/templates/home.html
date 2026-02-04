@@ -1,99 +1,147 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | EligifyAI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-  
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+                <i class="fas fa-landmark"></i>
+                <span>EligifyAI</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="text-blue-600 transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="{% url 'logout' %}" class="px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition font-medium">Logout</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
 
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-
-
-<body>
- 
-  <body style="margin:0; height:100vh; background:url('/static/img/loan5.jpg') no-repeat center center/cover;"></body>
-<header class="p-3 opacity-75">
-    <nav>
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white text-2xl font-semibold">Loan Prediction</div>
-            <div class="space-x-4">
-                <a href="{% url 'home' %}" class="text-white hover:underline">Home</a>
-                <a href="{% url 'prediction' %}" class="text-white hover:underline">CheckEligibility</a>
-                <a href="{% url 'team' %}" class="text-white hover:underline">Team members</a>
-                <a href="{% url 'logout' %}" class="text-white hover:underline">Logout</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 font-medium text-slate-600">
+                <a href="{% url 'home' %}" class="hover:text-blue-600 transition block">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-600 transition block">About</a>
+                <a href="{% url 'prediction' %}" class="hover:text-blue-600 transition block">Check Eligibility</a>
+                <a href="{% url 'team' %}" class="hover:text-blue-600 transition block">Team</a>
+                <a href="{% url 'faq' %}" class="hover:text-blue-600 transition block">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-600 transition block">Contact</a>
+                <a href="{% url 'logout' %}" class="block text-blue-600 font-semibold">Logout</a>
             </div>
         </div>
     </nav>
-</header>
 
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-  <div class="container mx-auto" style="padding-top: 5rem;">
-    <div class="text-center">
-        <h1 class="text-5xl font-bold text-white " style="opacity: 0.75;">Welcome to Our Loan Eligibility Prediction System</h1>
-        <p class="text-2xl mt-4" style="color: #ff7f7f;">Making Informed Loan .</p>
-        <br>
-        <a href="{% url 'prediction' %}" class="buttongetstarted">CheckEligibility</a><br><br>
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 
-
-        <section class="transparent-section text-white py-10">
-          <div class="container mx-auto text-center">
-              <div class="flex flex-col items-center space-y-4 md:space-x-4">
-                  <div class="md:w-1/2">
-                      <h2 class="text-3xl font-bold">Join Us Today</h2>
-                      <p>Get started with our Loan Eligibility Prediction Model and make informed decisions.</p>
-                      <p>Your Company Name</p>
-                  </div>
-                  <div class="md:w-1/2">
-                  </div>
-              </div>
-          </div>
-      </section>
-      
-
-  <!-- Additional Content Section -->
-  <section class="transparent-section text-white py-12">
-    <div class="container mx-auto px-4">
-        <div class="text-center">
-            <h2 class="text-3xl font-bold">Explore Our Features</h2>
-            <p class="text-lg mt-4">Discover all the powerful features of our  prediction platform:</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            <div class="card">
-                <h3 class="card-title">Feature 1</h3>
-                <p class="card-description">Description of Feature 1.</p>
+    <!-- Hero Section -->
+    <header class="bg-white">
+        <div class="container mx-auto px-6 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center">
+            <div class="md:w-1/2 md:pr-12">
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
+                    Smart Loan Decisions with <span class="text-blue-600">AI Precision</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-8">
+                    Get instant loan eligibility predictions powered by advanced machine learning algorithms. Fast, accurate, and secure.
+                </p>
+                <div class="flex gap-4">
+                    <a href="{% url 'prediction' %}" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-700 hover:shadow-xl transition transform hover:-translate-y-1">
+                        Check Eligibility Now
+                    </a>
+                    <a href="#features" class="bg-slate-100 text-slate-700 px-8 py-3 rounded-xl font-semibold hover:bg-slate-200 transition">
+                        Learn More
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <h3 class="card-title">Feature 2</h3>
-                <p class="card-description">Description of Feature 2.</p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Feature 3</h3>
-                <p class="card-description">Description of Feature 3.</p>
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <img src="{% static 'img/eligify.png' %}" alt="EligifyAI Banner" class="rounded-2xl shadow-2xl w-full object-cover h-auto transform transition duration-500 hover:scale-[1.02]">
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-  <!-- Footer Section -->
-  <footer class="transparent-section  text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; 2024 Loan Eligibility Prediction. All Rights Reserved.</p>
-    </div>
-  </footer>
-  <div id="loading-spinner" class="hidden">
-    <div class="spinner"></div>
-  </div>
-  <script>
-    // Show the loading spinner when the page starts loading
-    window.addEventListener("load", function () {
-      document.getElementById("loading-spinner").style.display = "none";
-    });
-  </script>
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose EligifyAI?</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">We combine financial expertise with cutting-edge technology to provide you with the most reliable predictions.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition border border-slate-100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-2xl mb-6">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">AI-Powered Accuracy</h3>
+                    <p class="text-slate-600">Our model is trained on thousands of loan applications to provide highly accurate eligibility estimates.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition border border-slate-100">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Instant Results</h3>
+                    <p class="text-slate-600">No waiting days for a bank response. Get your preliminary eligibility status in seconds.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition border border-slate-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Secure & Private</h3>
+                    <p class="text-slate-600">Your financial data is processed securely and never shared with third parties without consent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-landmark"></i> EligifyAI
+            </div>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="{% url 'about' %}" class="hover:text-white transition">About Us</a>
+                <a href="{% url 'faq' %}" class="hover:text-white transition">FAQ</a>
+                <a href="{% url 'contact' %}" class="hover:text-white transition">Contact Support</a>
+            </div>
+            <p class="text-sm opacity-50">&copy; 2024 EligifyAI Loan Prediction System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
-
 </html>
